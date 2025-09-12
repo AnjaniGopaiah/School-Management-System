@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 const Student = require('./models/Student'); // adjust path if needed
 
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://vishnua7509:V%21shnu%4004@cluster0.hzt3v96.mongodb.net/schoolDB?retryWrites=true&w=majority&appName=Cluster0', {
+// Use the environment variable
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
+})
+.then(() => console.log('MongoDB connected'))
+.catch((err) => console.error('MongoDB connection error:', err));
 
 async function updateEmail() {
   try {
