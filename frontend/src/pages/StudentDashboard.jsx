@@ -26,7 +26,7 @@ const StudentDashboard = () => {
     if (!token) return navigate('/login');
 
     try {
-      const res = await fetch('http://localhost:5000/api/students/me', {
+      const res = await fetch('https://school-management-system-5anj.onrender.com/api/students/me', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();

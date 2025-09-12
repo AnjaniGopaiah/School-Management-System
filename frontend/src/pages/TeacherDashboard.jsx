@@ -38,7 +38,7 @@ function TeacherDashboard() {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/teachers/me', {
+      const res = await fetch('https://school-management-system-5anj.onrender.com/api/teachers/me', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,

@@ -63,7 +63,7 @@ function StudentsSection({ students }) {
 
     try {
       if (editMarksIndex === index) {
-        await fetch(`http://localhost:5000/api/teachers/update-marks/${tempData._id}`, {
+        await fetch(`https://school-management-system-5anj.onrender.com/api/teachers/update-marks/${tempData._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ function StudentsSection({ students }) {
 
       if (editAttendanceIndex === index) {
         const { presentDays, totalDays } = tempData.attendanceSummary;
-        await fetch(`http://localhost:5000/api/teachers/update-attendance/${tempData._id}`, {
+        await fetch(`https://school-management-system-5anj.onrender.com/api/teachers/update-attendance/${tempData._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
