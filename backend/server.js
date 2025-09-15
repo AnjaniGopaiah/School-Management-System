@@ -7,11 +7,23 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://school-management-system-uh8h.vercel.app'
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', // or whatever your frontend URL is
+  origin: function(origin, callback){
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'), false);
+    }
+  },
   credentials: true
 }));
+
 // DB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
